@@ -23,6 +23,6 @@ jobs:
           echo "TRIGGER_TOKEN = $TRIGGER_TOKEN"
           curl --request POST \
                --url "https://api.github.com/repos/baentsch/ghtestsub/dispatches"\
-               --header "authorization: Bearer sometoken"\
+               --header "authorization: Bearer $TRIGGER_TOKEN"\
                --data "{ 'event_type' : 'Upstream Trigger'}"
 
