@@ -11,8 +11,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: openquantumsafe/ci-ubuntu-jammy:latest
+#    container:
+#      image: openquantumsafe/ci-ubuntu-jammy:latest
     steps:
       - name: Just a test
         run: echo "Hello World"
