@@ -11,15 +11,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-#    container:
-#      image: openquantumsafe/ci-ubuntu-jammy:latest
     steps:
-      - name: Just a test
-        run: echo "Hello World"
       - name: Trigger sub-workflow
+        if: github.ref == 'refs/heads/main'
         env:
           TRIGGER_TOKEN: ${{ secrets.OQS_TRIGGER_TOKEN }}
-# too long?               --data '{ "event_type" : "Triggered from https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"}'
         run: |
           curl --request POST \
                --url "https://api.github.com/repos/baentsch/ghtestsub/dispatches"\
