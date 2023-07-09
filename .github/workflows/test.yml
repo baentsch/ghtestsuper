@@ -21,10 +21,8 @@ jobs:
           TRIGGER_TOKEN: ${{ secrets.OQS_TRIGGER_TOKEN }}
 # too long?               --data '{ "event_type" : "Triggered from https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"}'
         run: |
-          env
-          echo "{ \"event_type\" : \"Triggered from $GITHUB_REPOSITORY\"}"
           curl --request POST \
                --url "https://api.github.com/repos/baentsch/ghtestsub/dispatches"\
                --header "authorization: Bearer $TRIGGER_TOKEN"\
-               --data "{ \"event_type\" : \"Triggered from $GITHUB_REPOSITORY\"}"
+               --data "{ \"event_type\" : \"Triggered from ghtestsuper\"}"
 
