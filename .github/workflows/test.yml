@@ -11,12 +11,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: openquantumsafe/ci-ubuntu-jammy:latest
     steps:
       - name: Just a test
         run: echo "Hello World"
       - name: Trigger sub-workflow
         env:
            TRIGGER_TOKEN: ${{ secrets.OQS_TRIGGER_TOKEN }}
-        run: echo "TRIGGER_TOKEN = $TRIGGER_TOKEN"
-#        run: echo "TRIGGER_TOKEN = $TRIGGER_TOKEN" && curl --request POST   --url 'https://api.github.com/repos/baentsch/ghtestsub/dispatches'   --header 'authorization: Bearer $TRIGGER_TOKEN'   --data '{"event_type": "Upstream Trigger"}'
+        run: echo "TRIGGER_TOKEN = $TRIGGER_TOKEN" && curl --request POST   --url 'https://api.github.com/repos/baentsch/ghtestsub/dispatches'   --header 'authorization: Bearer $TRIGGER_TOKEN'   --data '{"event_type": "Upstream Trigger"}'
 
